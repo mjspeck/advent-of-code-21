@@ -78,33 +78,19 @@ Consider sums of a three-measurement sliding window. How many sums are larger th
 from typing import List
 
 
-def solve_puzzle_1(input_path: str = "input.txt") -> int:
+def solve_puzzle_1(input_path: str = "input.txt", offset: int = 1) -> int:
     with open(input_path) as f:
         lines: List[int] = list(map(int, f.readlines()))
 
     diffs = []
-    for num, line in enumerate(lines[1:]):
+    for num, line in enumerate(lines[offset:]):
         is_increase = line > lines[num]
         diffs.append(is_increase)
     return sum(diffs)
 
 
 def solve_puzzle_2(input_path: str = "input.txt", offset: int = 3) -> int:
-    with open(input_path) as f:
-        lines: List[int] = list(map(int, f.readlines()))
-
-    n_lines = len(lines)
-    sums = []
-    for num in range(offset - 1, n_lines):
-        window_sum = sum(lines[num - offset : num])
-        sums.append(window_sum)
-
-    diffs = []
-    for num, sum_ in enumerate(sums[1:]):
-        is_increase = sum_ > sums[num]
-        diffs.append(is_increase)
-
-    return sum(diffs)
+    return solve_puzzle_1(offset=offset)
 
 
 if __name__ == "__main__":
