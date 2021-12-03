@@ -57,7 +57,7 @@ Using this new interpretation of the commands, calculate the horizontal position
 from pathlib import Path
 from typing import Tuple
 
-INPUT_PATH = Path(__file__).parent / "input.txt"
+INPUT_PATH = Path(__file__).parent / "data/day_02.txt"
 
 
 def solve_puzzle_1() -> int:

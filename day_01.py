@@ -75,11 +75,17 @@ In this example, there are 5 sums that are larger than the previous sum.
 
 Consider sums of a three-measurement sliding window. How many sums are larger than the previous sum?
 """
+
+from pathlib import Path
 from typing import List
 
+from day_2 import INPUT_PATH
 
-def solve_puzzle_1(input_path: str = "input.txt", offset: int = 1) -> int:
-    with open(input_path) as f:
+INPUT_PATH = Path(__file__).parent / "data/day_01.txt"
+
+
+def solve_puzzle_1(offset: int = 1) -> int:
+    with open(INPUT_PATH) as f:
         lines: List[int] = list(map(int, f.readlines()))
 
     diffs = []
@@ -89,7 +95,7 @@ def solve_puzzle_1(input_path: str = "input.txt", offset: int = 1) -> int:
     return sum(diffs)
 
 
-def solve_puzzle_2(input_path: str = "input.txt", offset: int = 3) -> int:
+def solve_puzzle_2(offset: int = 3) -> int:
     return solve_puzzle_1(offset=offset)
 
 
