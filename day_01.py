@@ -79,8 +79,6 @@ Consider sums of a three-measurement sliding window. How many sums are larger th
 from pathlib import Path
 from typing import List
 
-from day_2 import INPUT_PATH
-
 INPUT_PATH = Path(__file__).parent / "data/day_01.txt"
 
 
