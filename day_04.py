@@ -69,8 +69,6 @@ import re
 from pathlib import Path
 from typing import List, Optional, Set, Tuple
 
-from tqdm import tqdm
-
 INPUT_PATH = Path(__file__).parent / "data/day_04.txt"
 
 TEST_INPUT = """7,4,9,5,11,17,23,2,0,14,21,24,10,16,13,6,15,25,12,22,18,20,8,19,3,26,1
@@ -167,9 +165,6 @@ class BingoBoard:
     def __hash__(self) -> int:
         return hash(self.get_board_no_state())
 
-    def __eq__(self, __o: object) -> bool:
-        hash(self) == hash(__o)
-
 
 def parse_input(path: Path = INPUT_PATH) -> Tuple[List[int], List[BingoBoard]]:
     with open(path) as f:
@@ -189,7 +184,7 @@ def _parse_strings(data: List[str]) -> Tuple[List[int], Set[BingoBoard]]:
     return nums, boards
 
 
-def solve_puzzle_1(nums: List[int], boards: List[BingoBoard]) -> int:
+def solve_puzzle_1(nums: List[int], boards: Set[BingoBoard]) -> int:
     score = None
     for num in nums:
         for board in boards:
@@ -231,7 +226,6 @@ def test_puzzle_2():
     expected_score = 1924
     nums, boards = _parse_strings(TEST_INPUT)
     score = solve_puzzle_2(nums, boards)
-    print(f"Test 2 score: {score}")
     assert (
         score == expected_score
     ), f"puzzle 2 failed with score {score}, expected {expected_score}"
@@ -243,6 +237,7 @@ test_puzzle_2()
 
 if __name__ == "__main__":
     nums, boards = parse_input(INPUT_PATH)
+
     score = solve_puzzle_1(nums, boards)
     print(f"Answer for puzzle 1: {score}")
 
