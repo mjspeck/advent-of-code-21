@@ -93,7 +93,6 @@ def solve_puzzle(initial_state: List[int], days: int):
 
 def test_puzzle():
     test_answer_1 = solve_puzzle(TEST_INPUT, 18)
-    print(test_answer_1)
     assert test_answer_1 == 26
 
     test_answer_2 = solve_puzzle(TEST_INPUT, 80)
